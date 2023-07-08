@@ -1,1 +1,9 @@
-[{"title":"oeu"},{"title":"oeu"},{"title":"jqu.oeoaakjqk"},{"title":"new book"}]
+[
+  {
+    "id": "32234",
+    "title": "A Book",
+    "imageUrl": "toehut.com",
+    "description": "This is a test",
+    "price": "234"
+  }
+]
