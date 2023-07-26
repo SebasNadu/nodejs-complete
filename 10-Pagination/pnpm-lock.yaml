@@ -56,6 +56,9 @@ dependencies:
   sequelize:
     specifier: ^5.22.5
     version: 5.22.5
+  stripe:
+    specifier: 12.14.0
+    version: 12.14.0
 
 devDependencies:
   nodemon:
@@ -2916,6 +2919,14 @@ packages:
     resolution: {integrity: sha512-4gB8na07fecVVkOI6Rs4e7T6NOTki5EmL7TUduTs6bu3EdnSycntVJ4re8kgZA+wx9IueI2Y11bfbgwtzuE0KQ==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /stripe@12.14.0:
+    resolution: {integrity: sha512-WrDlYH1p5jliY7uzSU5nLDY7OCIeRe6FkC0hhScpTGwMthP/Muk38WXGeggjDHKeXAGCs43jUheZ7Ud/NEAJdg==}
+    engines: {node: '>=12.*'}
+    dependencies:
+      '@types/node': 20.4.2
+      qs: 6.11.0
+    dev: false
 
   /supports-color@5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
