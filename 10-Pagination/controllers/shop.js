@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const stripe = require("stripe")(
-  "pk_test_51NYAM6KKDWMfuh6S7RLuFQWgtcWNFKAEzqAR0NWPWvI2ItiAxXTxSpbMOnEOaDsDtoYZBoBtYQfRY0OfEEn5KJlU00HEsrDTd8"
+  "sk_test_51NYAM6KKDWMfuh6StcTMbbXnc8LuG6s9S5qourSlIzz5VqPcOTQeS2LSAKSsZ40KB5qIG6QWjNN9bGYPhybjMs1w00fuEphzor"
 );
 
 const PDFDocument = require("pdfkit");
@@ -159,13 +159,22 @@ exports.getCheckout = (req, res, next) => {
         payment_method_types: ["card"],
         line_items: products.map((p) => {
           return {
-            name: p.productId.title,
-            description: p.productId.description,
-            amount: p.productId.price * 100,
-            currency: "usd",
+            // name: p.productId.title,
+            // description: p.productId.description,
+            // amount: p.productId.price * 100,
+            // currency: "usd",
+            price_data: {
+              currency: "usd",
+              product_data: {
+                name: p.productId.title,
+                description: p.productId.description,
+              },
+              unit_amount: p.productId.price * 100,
+            },
             quantity: p.quantity,
           };
         }),
+        mode: "payment",
         success_url:
           req.protocol + "://" + req.get("host") + "/checkout/success", // => http://localhost:3000
         cancel_url: req.protocol + "://" + req.get("host") + "/checkout/cancel",
