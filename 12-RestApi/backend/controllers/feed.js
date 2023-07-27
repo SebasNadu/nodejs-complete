@@ -11,7 +11,7 @@ exports.getPosts = async (req, res, next) => {
   const perPage = 2;
   try {
     const totalItems = await Post.find().countDocuments();
-    const posts = Post.find()
+    const posts = await Post.find()
       .populate("creator")
       .skip((currentPage - 1) * perPage)
       .limit(perPage);
@@ -21,11 +21,11 @@ exports.getPosts = async (req, res, next) => {
       posts: posts,
       totalItems: totalItems,
     });
-  } catch (error) {
-    if (!error.statusCode) {
-      error.statusCode = 500;
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
     }
-    next(error);
+    next(err);
   }
 };
 
